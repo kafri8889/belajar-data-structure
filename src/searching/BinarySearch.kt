@@ -1,3 +1,5 @@
+package searching
+
 import kotlin.system.measureNanoTime
 
 // Binary search is faster than linear search except for small arrays.

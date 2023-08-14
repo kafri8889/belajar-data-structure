@@ -1,3 +1,4 @@
+import searching.binarySearch
 import kotlin.system.measureTimeMillis
 
 // Ex:  O(n), O(n), O(log(n)), O(log(n)), O(2n), dan O(n!)

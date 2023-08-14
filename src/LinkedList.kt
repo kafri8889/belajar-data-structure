@@ -53,6 +53,20 @@ class LinkedList<E>() {
         tail?.next = null
     }
 
+    fun addAt(e: E, position: Int) {
+        var currNode: ListNode<E>? = head
+        var index = 0
+        while (index < position - 1) {
+            currNode = currNode?.next
+            index++
+        }
+
+        val temp = currNode?.next
+        currNode?.next = ListNode(e).apply {
+            next = temp
+        }
+    }
+
     fun addFirst(e: E) {
         // [2] + [1]
         //     listNode.next = head
