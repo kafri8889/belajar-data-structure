@@ -1,5 +1,5 @@
 package sorting
-fun swap(arr: IntArray, i: Int, j: Int) {
+private fun swap(arr: IntArray, i: Int, j: Int) {
     arr[i] = arr[j].also { arr[j] = arr[i] }
 }
 
