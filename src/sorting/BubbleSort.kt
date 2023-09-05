@@ -16,9 +16,7 @@ private fun swap(arr: Array<Int>, i: Int, j: Int) {
  *
  * @return true jika kedua nilai tersebut harus ditukar, false otherwise
  */
-private fun shouldSwap(n1: Int, n2: Int, ascending: Boolean): Boolean {
-    return if (ascending) n1 < n2 else n1 > n2
-}
+private fun shouldSwap(n1: Int, n2: Int, ascending: Boolean): Boolean = if (ascending) n1 < n2 else n1 > n2
 
 /**
  * @param arr array
