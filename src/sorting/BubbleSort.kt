@@ -25,22 +25,17 @@ private fun shouldSwap(n1: Int, n2: Int, ascending: Boolean): Boolean = if (asce
 fun bubbleSort(arr: Array<Int>, ascending: Boolean = true) {
     if (arr.size <= 1) return
 
-    while (true) {
-        // Pointer 2
-        var p2 = 1
-        // Untuk pengecekan jika swapped == false, berarti semua nilainya sudah di sort, maka hentikan loop
-        var swapped = false
-        // p1: Pointer 1
-        for (p1 in arr.indices) {
-            if (shouldSwap((arr.getOrNull(p2) ?: break), arr[p1], ascending)) swap(arr, p1, p2).also { swapped = true }
-            p2++
+    for (x in arr.indices) {
+        for (i in arr.indices) {
+            if (i == arr.size - 1) break
+            if (shouldSwap(arr[i + 1], arr[i], ascending)) swap(arr, i, i + 1)
         }
-        if (!swapped) break
     }
 }
 
 fun main() {
     val arr = arrayOf(6,2,1,5,4,3)
+//    val arr = arrayOf(1,2,3,4,5,6)
     bubbleSort(arr)
     println(arr.contentDeepToString())
 }

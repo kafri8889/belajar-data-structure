@@ -34,34 +34,19 @@ fun simpledBubbleSort(arr: Array<Int>, ascending: Boolean = true) {
     // Jika array kosong atau hanya berisi satu elemen saja, batalkan penyortiran
     if (arr.size <= 1) return
 
-    while (true) {
-        // Pointer 2
-        var p2 = 1
-        // Untuk pengecekan jika swapped == false, berarti semua nilainya sudah di sort, maka hentikan loop
-        var swapped = false
-        // p1: Pointer 1
-        for (p1 in arr.indices) {
-            // Jika nilai n1 itu null, maka hentikan perulangan (for loop)
-            // mengapa nilai n1 bisa null?, karena saat nilai p1 berada di index terakhir
-            // index p2 berada di "p1 + 1", saat kita mencoba untuk mendapatkan nilai di index p2
-            // maka akan terjadi error IndexOutOfBoundsException, hal inilah yang menyebabkan nilai n1 bisa null
-            val n1 = arr.getOrNull(p2) ?: break
-            val n2 = arr[p1]
+    // Iterasi sebanyak size array
+    // Variable "x" tidak dipakai
+    for (x in 0 until arr.size) {
+        for (i in 0 until arr.size) {
+            // Jika "i" adalah index terakhir, maka hentikan perulangan
+            // Jika tidak dihentikan, maka akan terjadi error IndexOutOfBoundsException di bagian "arr[i + 1]"
+            if (i == arr.size - 1) break
+
             // Cek apakah kedua nilai harus di tukar
-            val shouldSwap = shouldSwap(n1, n2, ascending)
+            val shouldSwap = shouldSwap(arr[i + 1], arr[i], ascending)
 
             // Jika kedua nilai harus ditukar, maka tukar kedua nilai tersebut
-            // lalu ganti nilai variable "swapped" menjadi true
-            if (shouldSwap) {
-                swap(arr, p1, p2)
-                swapped = true // Ubah nilai variabel "swapped" ke true, karena terjadi pertukaran nilai
-            }
-
-            p2++
+            if (shouldSwap) swap(arr, i, i + 1)
         }
-
-        // Jika swapped bernilai false, maka tidak terjadi penukaran
-        // hal ini menandakan bahwa elemen-elemen didalam array sudah diurutkan
-        if (!swapped) break
     }
 }
